@@ -13,10 +13,10 @@ function AddForm() {
   const [loading, setLoading] = useState(false); 
 
 
-  const handleImageUpload =(event)=>{
+  const handleImageUpload = (event)=>{
     const selectedImage = event.target.files[0];
     setFile(selectedImage)
-    console.log("IMG//////////",selectedImage)
+    console.log("IMG --- >",selectedImage)
 }
 
   const handleCategoryChange = (e) => {
@@ -62,6 +62,7 @@ function AddForm() {
         formData.append('region', value)
       }) 
 
+      console.log("FORM DATA", formData)
       
       const response = await fetch(`${API_URL}/firm/add-firm`, 
               {
@@ -84,25 +85,19 @@ function AddForm() {
               alert("Firm added succesfully... ")
             } else if (data.message === "vendor can have only one firm...") {
               alert("Firm Exists 🥗. Only 1 firm can be added  ")
-              setFirmName("")
-              setArea("")
-              setCategory([])
-              setRegion([])
-              setOffer("")
-              setFile(null)
             } else {
               alert('Failed to add Firm')
             }
 
               
             const vendorFirmId = data.firmId;
-            const vendorFirmName= data.vendorFirmName;
+            const vendorRestuarant= data.vendorFirmName;
 
-            console.log("FIRM Name ----", vendorFirmName);
+            console.log("FIRM Name ----", vendorRestuarant);
             console.log("FIRM ID-----", vendorFirmId);
             
             localStorage.setItem('firmId', vendorFirmId);
-            localStorage.setItem('firmName', vendorFirmName);
+            localStorage.setItem('firmName', vendorRestuarant);
 
             window.location.reload()
 

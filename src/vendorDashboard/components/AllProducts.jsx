@@ -14,7 +14,7 @@ function AllProducts() {
       const newProductsData = await response.json()
 
       setProducts(newProductsData.product);
-      
+      console.log(newProductsData);
 
     } catch (error) {
       console.error(error)
@@ -47,7 +47,7 @@ function AllProducts() {
 
 
   return (
-    <div>
+    <div className='productSection'>
       {!products ? ( <p> No Products were aded </p>): (
         <table className='product-table'>
           <thead>
@@ -59,25 +59,30 @@ function AllProducts() {
             </tr>
           </thead>
           <tbody>
-            {products.map((item) => (
-              
-                <tr key={item._id}>
-                  <td>{item.productName}</td>
-                  <td>{item.price}</td>
-                <td>
-                  {item.image && (
-                    <img src={`${API_URL}/uploads/${item.image}`} alt={item.productName}
-                    style={{width: "50px", height: "50px"}}/>
-                  )}
-                </td>
+            {products.map((item) =>  {  
+            return (
+              <>
+                  <tr key={item._id}>
+                    <td>{item.productName}</td>
+                    <td>{item.price}</td>
+                  <td>
+                    {item.image && (
+                      <img src={`${API_URL}/uploads/${item.image}`} alt={item.productName}
+                      style={{width: "50px", height: "50px"}}/>
+                    )}
+                  </td>
 
                   <td>
-                    <button onClick={() => deleteProductById(item._id)}>Delete</button>
+                    <button onClick={() => deleteProductById(item._id)}
+                    className='deleteBtn'
+                      >Delete</button>
                   </td>
 
                 </tr>
               
-            ) )}
+              </>
+                ) 
+            } )}
           </tbody>
         </table>
       )}

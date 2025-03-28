@@ -15,10 +15,10 @@ export const LandingPage = () => {
     const [showRegister, setShowRegister] = useState(false);
     const [showFirm, setShowFirm] = useState(false);
     const [showProduct, setShowProduct] = useState(false);
-    const [showAllProducts, setShowAllProducts] = useState(false);
     const [showWelcome, setShowWelcome] = useState(false);
-    const [showFirmTitle, setShowFirmTitle] = useState(true)
+    const [showAllProducts, setShowAllProducts] = useState(false);
     const [showLogOut, setShowLogOut] = useState(false)
+    const [showFirmTitle, setShowFirmTitle] = useState(true)
 
 
     useEffect(() => {
@@ -51,7 +51,6 @@ const logOutHandler =()=>{
         setShowFirmTitle(true)
         setShowWelcome(false)
 
-        window.location.reload()
     }
 
     const showLoginHandler =()=>{
@@ -73,21 +72,32 @@ const logOutHandler =()=>{
     }
     
     const showFirmHandler = ()=>{
+        if (showLogOut) {
         setShowRegister(false)
         setShowLogin(false)
         setShowFirm(true)
         setShowProduct(false)
         setShowWelcome(false)
         setShowAllProducts(false)
+    }else {
+        alert("please login")
+        setShowLogin(true)
+    }
     }
 
     const showProductHandler = ()=>{
+        if (showLogOut) {
         setShowRegister(false)
         setShowLogin(false)
         setShowFirm(false)
         setShowProduct(true)
         setShowWelcome(false)
         setShowAllProducts(false)
+    }else {
+        alert("please login")
+        setShowLogin(true)
+    }
+
     }
 
     const showWelcomeHandler = ()=>{
@@ -100,12 +110,18 @@ const logOutHandler =()=>{
     }
 
     const showAllProductsHandler = ()=>{
-        setShowRegister(false)
-        setShowLogin(false)
-        setShowFirm(false)
-        setShowProduct(false)
-        setShowWelcome(false)
-        setShowAllProducts(true)
+        if(showLogOut){
+            setShowRegister(false)
+            setShowLogin(false)
+            setShowFirm(false)
+            setShowProduct(false)
+            setShowWelcome(false)
+            setShowAllProducts(true)
+        
+        }else{
+            alert("please login")
+            setShowLogin(true)
+        }
     }
 
     return (
@@ -125,10 +141,10 @@ const logOutHandler =()=>{
                 showFirmTitle = {showFirmTitle}
         />
 
-        {showFirm  && <AddForm />}
-        {showProduct && <AddProduct />}
+        {showFirm  && showLogOut && <AddForm />}
+        {showProduct && showLogOut &&<AddProduct />}
         {showWelcome && <Welcome />}
-        {showAllProducts && <AllProducts />}
+        {showAllProducts && showLogOut && <AllProducts />}
         {showLogin && <Login showWelcomeHandler ={showWelcomeHandler}/>}
         {showRegister && <Register showLoginHandler = {showLoginHandler}/>}
 

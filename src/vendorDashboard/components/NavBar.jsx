@@ -22,11 +22,11 @@ function NavBar(
 
       <div className="userAuth">
         {!showLogOut ?
-          (   <> 
+              <> 
                 <span onClick={showLoginHandler}>Login | </span>
                 <span onClick={showRegisterHandler}>Register </span>
               </> 
-          )   
+          
           : (  <span onClick={logOutHandler}>Logout </span> )
         }
       

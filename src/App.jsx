@@ -1,5 +1,8 @@
+import React from 'react';
 import NotFound from './vendorDashboard/components/NotFound.jsx';
 import { LandingPage } from './vendorDashboard/pages/LandingPage';
+
+import "./App.css"
 
 import { Route, Routes } from 'react-router-dom';
 

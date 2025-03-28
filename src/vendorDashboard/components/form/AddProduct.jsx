@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { API_URL } from '../utilities/ApiPath.js'
+import { ThreeCircles } from 'react-loader-spinner';
 
 function AddProduct() {
   const [productName, setProductName] = useState("");
@@ -8,7 +9,7 @@ function AddProduct() {
   const [bestSeller, setBestSeller] = useState(false);
   const [image, setImage] = useState(null);
   const [description, setDescription] = useState("");
-// const [loading, setLoading] = useState(false); 
+  const [loading, setLoading] = useState(false); 
 
 
 
@@ -33,6 +34,7 @@ const handleBestSeller =(event)=>{
 
   const handleAddProduct = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       const loginToken = localStorage.getItem('loginToken');
@@ -62,28 +64,40 @@ const handleBestSeller =(event)=>{
 
         if(response.ok){
           alert('Product added succesfully')
+        }
           setPrice("")
           setProductName("")
           setBestSeller(false)
           setCategory([])
           setDescription("")
           setImage(null)
-        }
 
 
     } catch (error) {
-      console.error("error", error)
-      console.log("error", error);
-      
+      console.log("Error while Adding the product", error);
       alert('Failed to add Product...')
+    }finally {
+      setLoading("")
     }
-
   }
 
 
   return (
     <div className="firmSection">
+{loading && <div className='loaderSection'>
+  <ThreeCircles
+    visible={loading}
+    height={100}
+    width={100}
+    color='#4fa94d'
+    ariaLabel='three-circles-loading'
+    wrapperStyle={{}}
+    wrapperClass=''
+  />
+  <p>Please wait, your product is being added... </p>
+  </div>}
 
+{!loading &&
     <form className="tabelFrom" onSubmit={handleAddProduct}>
     <h3>Add Product</h3>
 
@@ -165,7 +179,7 @@ const handleBestSeller =(event)=>{
 <div className="btnSubmit">
             <button type='submit'>Submit</button>
         </div>
-    </form>
+    </form> }
 
   </div>
   )

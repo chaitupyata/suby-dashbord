@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { API_URL } from '../utilities/ApiPath.js'
+import { ThreeCircles } from 'react-loader-spinner'
 
 
 export const Register = ({showLoginHandler}) => {
@@ -7,12 +8,18 @@ export const Register = ({showLoginHandler}) => {
   const [password, setPassword] = useState("")
   const [email, setEmail] = useState("")
   const [error, setError] = useState("")
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
 
 // api function
 
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  }
+
   const handleSubmit = async(e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await fetch(`${API_URL}/vendor/register`,
         {
@@ -33,16 +40,32 @@ export const Register = ({showLoginHandler}) => {
         }
 
     } catch (error) {
+      setError(data.error)
       console.error("registration failed", error)
       alert("Registration failed")
+    }finally {
+      setLoading(false)
     }
   }
 
   return (
     <div className='registerSection'> 
-      <form  className='authForm' onSubmit={handleSubmit}>
-        <h3>Vendor Register</h3>
+{loading && <div className='loaderSection'>
+  <ThreeCircles
+    visible={loading}
+    height={100}
+    width={100}
+    color='#4fa94d'
+    ariaLabel='three-circles-loading'
+    wrapperClass=''
+    wrapperStyle={{}}
+  />
+  <p>Hi, your Registration under process...</p>
+  </div>}
 
+{!loading && 
+      <form  className='authForm' onSubmit={handleSubmit} autoComplete='off'>
+        <h3>Vendor Register</h3>
         <label className='label'>Username</label> 
         <input 
             type="text"
@@ -65,16 +88,24 @@ export const Register = ({showLoginHandler}) => {
 
         <label  className='label' >Password</label> 
         <input 
-            type="text"
+            type={showPassword ? "test" : "password"}
             placeholder='Enter your password...'
             name='password'
             onChange={(e) => setPassword(e.target.value)}
             value={password}
 
         /> <br />
+        <span 
+          className='showPassword'
+          onClick={handleShowPassword}
+          >
+            {showPassword ? 'Hide' : "Show"}
+
+        </span>
         <div className="btnSubmit">
             <button type='submit'>Submit</button>
         </div>
-    </form></div>
-  )
-}
+    </form>}
+    </div>
+  );
+};
