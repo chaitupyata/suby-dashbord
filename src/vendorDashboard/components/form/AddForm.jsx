@@ -16,6 +16,7 @@ function AddForm() {
   const handleImageUpload =(event)=>{
     const selectedImage = event.target.files[0];
     setFile(selectedImage)
+    console.log("IMG//////////",selectedImage)
 }
 
   const handleCategoryChange = (e) => {
@@ -81,20 +82,6 @@ function AddForm() {
               setOffer("")
               setFile(null)
               alert("Firm added succesfully... ")
-
-              
-            const vendorFirmId = data.firmId;
-            const vendorFirmName= data.vendorFirmName;
-
-            console.log("FIRM Name", vendorFirmName);
-            console.log("FIRM ID", vendorFirmId);
-            
-            localStorage.setItem('firmId', vendorFirmId);
-            localStorage.setItem('firmName', vendorFirmName);
-
-            window.location.reload()
-        
-
             } else if (data.message === "vendor can have only one firm...") {
               alert("Firm Exists 🥗. Only 1 firm can be added  ")
               setFirmName("")
@@ -107,16 +94,26 @@ function AddForm() {
               alert('Failed to add Firm')
             }
 
+              
+            const vendorFirmId = data.firmId;
+            const vendorFirmName= data.vendorFirmName;
 
+            console.log("FIRM Name ----", vendorFirmName);
+            console.log("FIRM ID-----", vendorFirmId);
+            
+            localStorage.setItem('firmId', vendorFirmId);
+            localStorage.setItem('firmName', vendorFirmName);
 
-    } catch (error) {
-      console.error("failed to add Firm")
-      alert("failed to add Firm")
-    }finally {
-      setLoading(false)
+            window.location.reload()
+
+      } catch (error) {
+        console.error("failed to add Firm")
+        alert("failed to add Firm")
+      }finally {
+        setLoading(false)
+      }
     }
-  }
-  
+    
   return (
     <div className="firmSection">
       {loading &&        <div className="loaderSection">
