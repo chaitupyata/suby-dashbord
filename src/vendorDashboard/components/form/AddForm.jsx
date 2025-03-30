@@ -89,6 +89,7 @@ function AddForm() {
               alert('Failed to add Firm')
             }
 
+              console.log("DATA ======", data)            
               
             const vendorFirmId = data.firmId;
             const vendorRestuarant= data.vendorFirmName;
