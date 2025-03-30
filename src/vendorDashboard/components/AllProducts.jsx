@@ -1,25 +1,24 @@
 import React, { useEffect, useState } from 'react'
-import { API_URL } from './utilities/ApiPath';
+import { API_URL } from './utilities/ApiPath.js';
 
 function AllProducts() {
   const [products, setProducts] = useState([])
 
   const productHandler = async() => {
     const firmId = localStorage.getItem("firmId");
+  console.log("FIRM ID)))),", firmId);
   
     try {
       const response = await fetch(`${API_URL}/product/${firmId}/products`);
 
-      
       const newProductsData = await response.json()
 
       setProducts(newProductsData.product);
-      console.log(newProductsData);
+      console.log("NEQW", newProductsData);
 
     } catch (error) {
-      console.error(error)
-      console.log("Failled to Fetch Products");
       alert("Failled to Fetch Products");
+      console.log("Failled to Fetch Products", error);
       
     }
   }
@@ -60,6 +59,9 @@ function AllProducts() {
           </thead>
           <tbody>
             {products.map((item) =>  {  
+              console.log("THIS IS ITEM", item)
+              console.log("PRODUCT ITEM IMAGE NAME", item.image);
+              
             return (
               <>
                   <tr key={item._id}>
