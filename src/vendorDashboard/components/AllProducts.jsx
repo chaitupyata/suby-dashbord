@@ -13,7 +13,7 @@ function AllProducts() {
 
       const newProductsData = await response.json()
 
-      setProducts(newProductsData.product);
+      setProducts(newProductsData.products);
       console.log("NEQW", newProductsData);
 
     } catch (error) {
@@ -28,6 +28,8 @@ function AllProducts() {
     console.log('this, is useEffect');
   
   }, []) 
+
+
   const deleteProductById = async(productId)=>{
     try {
             const response = await fetch(`${API_URL}/product/${productId}`,{
