@@ -44,6 +44,9 @@ function Login({showWelcomeHandler}) {
 
                 console.log("checking for VendorId:",vendorId)
 
+                window.location.reload()
+
+
                 const vendorResponse = await fetch(`${API_URL}/vendor/single-vendor/${vendorId}`)
 
                 window.location.reload()
