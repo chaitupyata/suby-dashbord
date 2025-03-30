@@ -16,6 +16,7 @@ function AddForm() {
   const handleImageUpload = (event)=>{
     const selectedImage = event.target.files[0];
     setFile(selectedImage)
+    localStorage.setItem("img", selectedImage.name)
     console.log("IMG --- >",selectedImage)
 }
 
@@ -62,7 +63,6 @@ function AddForm() {
         formData.append('region', value)
       }) 
 
-      console.log("FORM DATA", formData)
       
       const response = await fetch(`${API_URL}/firm/add-firm`, 
               {
@@ -89,15 +89,10 @@ function AddForm() {
               alert('Failed to add Firm')
             }
 
-              console.log("DATA ======", data)            
               
             const vendorFirmId = data.firmId;
             const vendorRestuarant= data.vendorFirmName;
           
-
-            console.log("FIRM Name ----", vendorRestuarant);
-            console.log("FIRM ID-----", vendorFirmId);
-            
             localStorage.setItem('firmId', vendorFirmId);
             localStorage.setItem('firmName', vendorRestuarant);
 
