@@ -93,6 +93,7 @@ function AddForm() {
               
             const vendorFirmId = data.firmId;
             const vendorRestuarant= data.vendorFirmName;
+          
 
             console.log("FIRM Name ----", vendorRestuarant);
             console.log("FIRM ID-----", vendorFirmId);

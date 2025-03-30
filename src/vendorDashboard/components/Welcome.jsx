@@ -1,4 +1,5 @@
 import React from 'react'
+import { API_URL } from './utilities/ApiPath.js'
 
 const Welcome = () => {
     const firmName = localStorage.getItem("firmName")
@@ -7,7 +8,7 @@ const Welcome = () => {
     <div className='welcomeSection'>
         <h2>Welcome {firmName}</h2>
         <div className="landingImage">
-          <img src='/assets/chef.jpeg' alt='welcome' />
+          <img src={`${API_URL}/`} alt='welcome' />
         </div>
     </div>
   )

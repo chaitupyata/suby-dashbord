@@ -39,6 +39,8 @@ function Login({showWelcomeHandler}) {
                     // localStorage.setItem("frimName", )
                     showWelcomeHandler()
                 }
+
+                console.log("login data ***", data )
                 
                 const vendorId = data.vendorId
 
