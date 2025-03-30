@@ -64,7 +64,9 @@ export const Register = ({showLoginHandler}) => {
   </div>}
 
 {!loading && 
-      <form  className='authForm' onSubmit={handleSubmit} autoComplete='off'>
+    <>
+  
+    <form  className='authForm' onSubmit={handleSubmit} autoComplete='off'>
         <h3>Vendor Register</h3>
         <label className='label'>Username</label> 
         <input 
@@ -93,6 +95,7 @@ export const Register = ({showLoginHandler}) => {
             name='password'
             onChange={(e) => setPassword(e.target.value)}
             value={password}
+            autoComplete="current-password" 
 
         /> <br />
         <span 
@@ -105,7 +108,9 @@ export const Register = ({showLoginHandler}) => {
         <div className="btnSubmit">
             <button type='submit'>Submit</button>
         </div>
-    </form>}
+    </form>
+    </>
+      }
     </div>
   );
 };
