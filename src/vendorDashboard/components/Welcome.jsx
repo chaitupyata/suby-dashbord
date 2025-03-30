@@ -12,7 +12,7 @@ const Welcome = () => {
     <div className='welcomeSection'>
         <h2>Welcome {firmName}</h2>
         <div className="landingImage">
-          <img src={`${firmImg}`} alt='welcome' />
+          <img src={firmImg} alt='welcome' />
         </div>
     </div>
   )
