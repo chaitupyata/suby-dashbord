@@ -44,7 +44,7 @@ function Login({showWelcomeHandler}) {
                 
                 const vendorId = data.vendorId
 
-                console.log("checking for VendorId:",vendorId)
+                console.log("checking for VendorId : ",vendorId)
 
                 window.location.reload()
 
