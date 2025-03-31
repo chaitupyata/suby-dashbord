@@ -102,10 +102,7 @@ function AddForm() {
             localStorage.setItem('firmName', vendorRestuarant);
             localStorage.setItem('firmImage', firmImage )
           
-
             window.location.reload()
-
-          
 
       } catch (error) {
         console.error("failed to add Firm")
