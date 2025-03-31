@@ -6,7 +6,6 @@ function AllProducts() {
 
   const productHandler = async() => {
     const firmId = localStorage.getItem("firmId");
-  console.log("FIRM ID)))),", firmId);
   
     try {
       const response = await fetch(`${API_URL}/product/${firmId}/products`);
