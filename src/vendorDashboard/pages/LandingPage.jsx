@@ -109,6 +109,8 @@ const logOutHandler =()=>{
     }
 
     const showAllProductsHandler = ()=>{
+        console.log("SHOW LOG OUT", showLogOut);
+        
         if(showLogOut){
             setShowRegister(false)
             setShowLogin(false)
