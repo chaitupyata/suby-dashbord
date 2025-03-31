@@ -92,9 +92,11 @@ function AddForm() {
               
             const vendorFirmId = data.firmId;
             const vendorRestuarant= data.vendorFirmName;
+            const firmImage = data.firmImage;
           
             localStorage.setItem('firmId', vendorFirmId);
             localStorage.setItem('firmName', vendorRestuarant);
+            localStorage.setItem('firmImage', firmImage )
 
             window.location.reload()
 
