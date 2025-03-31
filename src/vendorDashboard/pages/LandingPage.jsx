@@ -45,6 +45,7 @@ const logOutHandler =()=>{
         localStorage.removeItem("loginToken");
         localStorage.removeItem("firmId");
         localStorage.removeItem('firmName');
+        
         setShowLogOut(false)
         setShowFirmTitle(true)
         setShowWelcome(false)

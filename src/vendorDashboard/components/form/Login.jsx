@@ -34,9 +34,7 @@ function Login({showWelcomeHandler}) {
                     alert("Login success")
                     setEmail("");
                     setPassword("");
-                        // storing the token in local storage
                     localStorage.setItem("loginToken", data.jwtToken)
-                    // localStorage.setItem("frimName", )
                     showWelcomeHandler()
                 }
 
@@ -46,13 +44,12 @@ function Login({showWelcomeHandler}) {
 
                 console.log("checking for VendorId : ",vendorId)
 
-                window.location.reload()
 
                 const vendorResponse = await fetch(`${API_URL}/vendor/single-vendor/${vendorId}`)
-
                 window.location.reload()
 
-                const vendorData = await vendorResponse.json();
+                const vendorData = await vendorResponse?.json();
+
 
                 console.log("vendorData ====", vendorData);
                 
@@ -68,7 +65,7 @@ function Login({showWelcomeHandler}) {
                 }
         } catch (error) {
             console.error(error);
-            console.log("Error while logging the vendor", error);
+            console.log("LOGIN FAILED...", error);
 
         }finally {
             setLoading(false);
