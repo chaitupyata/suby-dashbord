@@ -72,7 +72,6 @@ const logOutHandler =()=>{
     
     const showFirmHandler = ()=>{     
         console.log("SHOW LOG OUT", showLogOut);
-        window.location.reload()
 
         if (showLogOut) {
         setShowRegister(false)
@@ -85,6 +84,7 @@ const logOutHandler =()=>{
         alert("please login")
         setShowLogin(true)
     }
+
     }
 
     const showProductHandler = ()=>{

@@ -109,6 +109,7 @@ function AddForm() {
             console.log("firmid", firmId)
             console.log("firmName", firmName)
             console.log("data", data)
+            
       } catch (error) {
         console.error("failed to add Firm")
         alert("failed to add Firm")
