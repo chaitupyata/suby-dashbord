@@ -93,13 +93,22 @@ function AddForm() {
             const vendorFirmId = data.firmId;
             const vendorRestuarant= data.vendorFirmName;
             const firmImage = data.firmImage;
+
+            
+            console.log("firmid", firmId)
+            console.log("firmName", firmName)
+            console.log("data", data)
           
             localStorage.setItem('firmId', vendorFirmId);
             localStorage.setItem('firmName', vendorRestuarant);
             localStorage.setItem('firmImage', firmImage )
+          
 
             window.location.reload()
 
+            console.log("firmid", firmId)
+            console.log("firmName", firmName)
+            console.log("data", data)
       } catch (error) {
         console.error("failed to add Firm")
         alert("failed to add Firm")

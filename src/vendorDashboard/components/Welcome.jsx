@@ -3,16 +3,17 @@ import { API_URL } from './utilities/ApiPath.js'
 
 const Welcome = () => {
     const firmName = localStorage.getItem("firmName");
-    const frimId = localStorage.getItem("firmId");
-    const firmImage = localStorage.getItem("firmImage")
-  
-  return (
-    <div className='welcomeSection'>
-        <h2>Welcome {firmName}</h2>
-        <img src={firmImage} alt={firmName} />
-      
-    </div>
-  )
+    const firmImage = localStorage.getItem("firmImage");
+
+    // Ensure correct image URL
+    const imageSrc = firmImage?.startsWith("http") ? firmImage : `${API_URL}/uploads/${firmImage}`;
+
+    return (
+        <div className='welcomeSection'>
+            <h2>Welcome {firmName}</h2>
+            {firmImage && <img src={imageSrc} alt={firmName} />}
+        </div>
+    );
 }
 
-export default Welcome
+export default Welcome;
