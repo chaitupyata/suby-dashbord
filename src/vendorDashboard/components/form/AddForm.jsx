@@ -95,8 +95,7 @@ function AddForm() {
             const firmImage = data.firmImage;
 
             
-            console.log("firmid", firmId)
-            console.log("firmName", firmName)
+            
             console.log("data", data)
           
             localStorage.setItem('firmId', vendorFirmId);
