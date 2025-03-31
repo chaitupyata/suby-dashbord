@@ -14,7 +14,11 @@ function AllProducts() {
       const newProductsData = await response.json()
 
       setProducts(newProductsData.products);
+
+      console.log("=+",products);
+      
       console.log("NEQW", newProductsData);
+
 
     } catch (error) {
       alert("Failled to Fetch Products");
