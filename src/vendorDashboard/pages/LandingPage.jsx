@@ -70,7 +70,10 @@ const logOutHandler =()=>{
         setShowAllProducts(false)
     }
     
-    const showFirmHandler = ()=>{
+    const showFirmHandler = ()=>{     
+        console.log("SHOW LOG OUT", showLogOut);
+        window.location.reload()
+
         if (showLogOut) {
         setShowRegister(false)
         setShowLogin(false)
@@ -85,6 +88,8 @@ const logOutHandler =()=>{
     }
 
     const showProductHandler = ()=>{
+   
+
         if (showLogOut) {
         setShowRegister(false)
         setShowLogin(false)
@@ -109,7 +114,6 @@ const logOutHandler =()=>{
     }
 
     const showAllProductsHandler = ()=>{
-        console.log("SHOW LOG OUT", showLogOut);
         
         if(showLogOut){
             setShowRegister(false)
