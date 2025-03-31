@@ -6,12 +6,11 @@ const Welcome = () => {
     const firmImage = localStorage.getItem("firmImage");
 
     // Ensure correct image URL
-    const imageSrc = firmImage?.startsWith("http") ? firmImage : `${API_URL}/uploads/${firmImage}`;
 
     return (
         <div className='welcomeSection'>
             <h2>Welcome {firmName}</h2>
-            {firmImage && <img src={imageSrc} alt={firmName} />}
+            <img src={ `${API_URL}/uploads/${firmImage}`} alt={firmName} />
         </div>
     );
 }
