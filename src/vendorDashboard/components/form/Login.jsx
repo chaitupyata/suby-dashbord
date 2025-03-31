@@ -31,7 +31,7 @@ function Login({showWelcomeHandler}) {
                 
                     // token also comes in above data
                 if (response.ok) {
-                    alert("Vendor logiedIn successfully... ")
+                    alert("Login success")
                     setEmail("");
                     setPassword("");
                         // storing the token in local storage
@@ -47,7 +47,6 @@ function Login({showWelcomeHandler}) {
                 console.log("checking for VendorId:",vendorId)
 
                 window.location.reload()
-
 
                 const vendorResponse = await fetch(`${API_URL}/vendor/single-vendor/${vendorId}`)
 

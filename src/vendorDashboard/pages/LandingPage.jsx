@@ -37,9 +37,7 @@ export const LandingPage = () => {
             setShowFirmTitle(false)
             setShowWelcome(true)
         }
-        // if (!firmName) {
-        //     setShowFirm(true)
-        // }
+
     }, [])
 
 const logOutHandler =()=>{
